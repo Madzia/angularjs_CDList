@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-1"></div>
+
+  <div class="col-md-10" ng-show="!!currentUser">
+    <h2>Remove category: {{rmedCateogry.name}}</h2>
+    <hr/>
+
+    <h3>Are you sure?</h3>
+
+    <div class="row">
+    <div class="col-md-6">
+      <a class="btn btn-primary" href="#/user/{{currentUser}}"  ng-show="!!currentUser">No, cancel.</a>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-danger" ng-click="rmCategory(rmedCateogry)"
+        ng-show="( !!currentUser && rmedCateogry.owner === AuthUser.id )">Yes, remove.</button>
+    </div>
+    </div>
+
+  </div>
+  <div class="col-md-1"></div>
+</div>
