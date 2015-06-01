@@ -15,11 +15,14 @@
       <div class="form-group {{ ( editCdForm.editcdUrl.$invalid ? 'has-error' : '') }}">
         <label for="exampleInputEmail1">URL</label>
         <input type="text" class="form-control" id="editcd-url" name="editcdUrl" placeholder="URL"
-          ng-model="editedCd.url" ng-minlength="6">
+          ng-model="editedCd.url" ng-minlength="8">
       </div>
       <a class="btn btn-danger" ng-show="!!currentUser" href="#/user/{{currentUser}}/category/{{editedCd.category}}">Cancel</a>
-      <button type="submit" class="btn btn-default"
+      <button type="submit" class="btn btn-primary"
         ng-disabled="( editCdForm.$invalid || (editedCd.name.length === 0) || (editedCd.url.length === 0) )"
-        ng-show="( !!currentUser && editedCd.owner === AuthUser.id )">Save</button>
+        ng-show="( !!currentUser && editedCd.owner === AuthUser.id ) && (!( editCdForm.$invalid || (editedCd.name.length === 0) || (editedCd.url.length === 0) ))">Save</button>
+    <button type="submit" class="btn btn-default"
+        ng-disabled="( editCdForm.$invalid || (editedCd.name.length === 0) || (editedCd.url.length === 0) )"
+        ng-show="((( editCdForm.$invalid) || (editedCd.name.length === 0) || (editedCd.url.length === 0) ))">Save</button>
     </form>
   </div>
