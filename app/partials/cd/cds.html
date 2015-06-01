@@ -2,7 +2,7 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
 
-    <h2>{{category.name}} bookmarks</h2>
+    <h2>{{category.name}} cds</h2>
     <hr/>
 
     <div class="row">
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="col-md-4">
-        <a class="btn btn-default" href="#/addbookmark/{{category.id}}" ng-show="!!currentUser">Add bookmark</a>
+        <a class="btn btn-default" href="#/addcd/{{category.id}}" ng-show="!!currentUser">Add cd</a>
       </div>
     </div>
 
@@ -41,7 +41,7 @@
         </tr>
       </thead>
 
-      <tr ng-repeat="book in bookmarks | categoryBookmarks: category | filter:query | orderBy:orderProp">
+      <tr ng-repeat="book in cds | categoryCds: category | filter:query | orderBy:orderProp">
         <td>
           <strong>{{book.name}}</storng>
           <a class="btn btn-link" href="{{book.url}}" target="_blank" title="{{book.url}}">
@@ -49,12 +49,12 @@
           </a>
         </td>
         <td ng-show="!!currentUser && AuthUser.id === user.id">
-          <a class="btn btn-default" href="#/editbookmark/{{book.id}}">
+          <a class="btn btn-default" href="#/editcd/{{book.id}}">
             <span class="glyphicon glyphicon-pencil"></span>
           </a>
         </td>
         <td ng-show="!!currentUser && AuthUser.id === user.id">
-          <a class="btn btn-default" href="#/rmbookmark/{{book.id}}">
+          <a class="btn btn-default" href="#/rmcd/{{book.id}}">
             <span class="glyphicon glyphicon-trash"></span>
           </a>
         </td>

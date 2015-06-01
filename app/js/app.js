@@ -6,7 +6,7 @@ var App = angular.module('App', [
   'ngRoute',
   'appControllers',
   'categoriesControllers',
-  'bookmarksControllers',
+  'cdsControllers',
   'appFilters',
   'appServices',
   'appDataServices'
@@ -40,22 +40,22 @@ App.config(['$routeProvider',
         templateUrl: 'partials/category/rmcategory.html',
         controller: 'rmCategoryCtrl'
       }).
-      // bookmarks
+      // cds
       when('/user/:userId/category/:categoryId', {
-        templateUrl: 'partials/bookmark/bookmarks.html',
-        controller: 'bookmarksCtrl'
+        templateUrl: 'partials/cd/cds.html',
+        controller: 'cdsCtrl'
       }).
-      when('/addbookmark/:categoryId', {
-        templateUrl: 'partials/bookmark/addbookmark.html',
-        controller: 'addBookmarkCtrl'
+      when('/addcd/:categoryId', {
+        templateUrl: 'partials/cd/addcd.html',
+        controller: 'addCdCtrl'
       }).
-      when('/editbookmark/:bookmarkId', {
-        templateUrl: 'partials/bookmark/editbookmark.html',
-        controller: 'editBookmarkCtrl'
+      when('/editcd/:cdId', {
+        templateUrl: 'partials/cd/editcd.html',
+        controller: 'editCdCtrl'
       }).
-      when('/rmbookmark/:bookmarkId', {
-        templateUrl: 'partials/bookmark/rmbookmark.html',
-        controller: 'rmBookmarkCtrl'
+      when('/rmcd/:cdId', {
+        templateUrl: 'partials/cd/rmcd.html',
+        controller: 'rmCdCtrl'
       }).
       // ---
       otherwise({

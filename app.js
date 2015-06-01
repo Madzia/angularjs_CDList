@@ -10,7 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./server/routes');
 var appServer = require('./server/lib/server.js');
-var appData = require('./server/lib/data.js')('angularBookmarks');
+var appData = require('./server/lib/data.js')('angularCds');
 var appManager = require('./server/lib/manager.js')(appData);
 
 passport.serializeUser(function(user, done) {

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-1"></div>
+
+  <div class="col-md-10" ng-show="!!currentUser">
+    <h2>Create cd: {{category.name}}</h2>
+    <hr/>
+
+  <div class="alert alert-danger" ng-show="!!addCdFailed">
+    <strong>Add cd failed.</strong> This name is already used in this category.
+  </div>
+
+
+    <form name="addCdForm" novalidate ng-submit="addCd(addedCd)">
+      <div class="form-group {{ ( addCdForm.addedCdName.$invalid ? 'has-error' : '' ) }}">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" class="form-control" id="addcd-name" name="addedCdName" placeholder="Name"
+          ng-model="addedCd.name" ng-minlength="6" ng-pattern="/[\w\d\s]+/">
+      </div>
+      <div class="form-group {{ ( addCdForm.addedCdUrl.$invalid ? 'has-error' : '' ) }}">
+        <label for="exampleInputEmail1">URL</label>
+        <input type="url" class="form-control" id="addcd-url" name="addedCdUrl" placeholder="URL"
+          ng-model="addedCd.url">
+      </div>
+      <a class="btn btn-danger" ng-show="!!currentUser" href="#/user/{{currentUser}}/category/{{category.id}}">Cancel</a>
+      <button type="submit" class="btn btn-default"
+        ng-disabled="( addcdForm.$invalid || (addedCd.name.length === 0) || (addedCd.url.length === 0) )"
+        ng-show="( !!currentUser && category.owner === AuthUser.id )">Add cd</button>
+    </form>
+  </div>
+  <div class="col-md-1"></div>
+</div>

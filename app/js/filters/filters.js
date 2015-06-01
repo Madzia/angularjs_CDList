@@ -19,7 +19,7 @@ appFilters.filter('usersCategories',
     return res;
   };
 }).
-filter('categoryBookmarks',
+filter('categoryCds',
   function() {
   return function(input, cat) {
     var id = null;

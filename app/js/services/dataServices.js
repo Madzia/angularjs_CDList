@@ -75,7 +75,7 @@ factory('DataService',
     //data via socket.io
     $rootScope.users = [];
     $rootScope.categories = [];
-    $rootScope.bookmarks = [];
+    $rootScope.cds = [];
 
     socket.on('add', function ( data ) {
       manager.add( $rootScope[ data.coll ], data.data );
@@ -92,7 +92,7 @@ factory('DataService',
     socket.on('init', function ( data ) {
         $rootScope.users = data.users;
         $rootScope.categories = data.categories;
-        $rootScope.bookmarks = data.bookmarks;
+        $rootScope.cds = data.cds;
         $rootScope.init = true;
         console.log('init');
     });
@@ -180,16 +180,16 @@ factory('DataService',
         }
         return callbacks( err, errType );
       },
-      'addBookmark': function ( bookmark ){
+      'addCd': function ( cd ){
         var err = false;
         var errType = {};
-        if( methods.findBookmarks( { 'name': bookmark.name, 'category': bookmark.category } ).length === 0 ){
-          bookmark.owner = $rootScope.AuthUser.id;
+        if( methods.findCds( { 'name': cd.name, 'category': cd.category } ).length === 0 ){
+          cd.owner = $rootScope.AuthUser.id;
           var data = {
             'user': $rootScope.AuthUser,
-            'data': bookmark
+            'data': cd
           }
-          socket.emit('addBookmark', data);
+          socket.emit('addCd', data);
         }
         else {
           err = true;
@@ -197,16 +197,16 @@ factory('DataService',
         }
         return callbacks( err, errType );
       },
-      'editBookmark': function ( bookmark ){
+      'editCd': function ( cd ){
         var err = false;
         var errType = {};
-        if( methods.findBookmarks( { 'id': bookmark.id } ).length === 1 ){
-          if( methods.findBookmarks( { 'name': bookmark.name, 'id': { '$ne': bookmark.id }, 'category': bookmark.category } ).length ===0 ){
+        if( methods.findCds( { 'id': cd.id } ).length === 1 ){
+          if( methods.findCds( { 'name': cd.name, 'id': { '$ne': cd.id }, 'category': cd.category } ).length ===0 ){
             var data = {
               'user': $rootScope.AuthUser,
-              'data': bookmark
+              'data': cd
             }
-            socket.emit('editBookmark', data);
+            socket.emit('editCd', data);
           }
           else {
             err = true;
@@ -219,15 +219,15 @@ factory('DataService',
         }
         return callbacks( err, errType );
       },
-      'rmBookmark': function ( bookmark ){
+      'rmCd': function ( cd ){
         var err = false;
         var errType = {};
-        if( methods.findBookmarks( { 'id': bookmark.id } ).length == 1 ){
+        if( methods.findCds( { 'id': cd.id } ).length == 1 ){
           var data = {
             'user': $rootScope.AuthUser,
-            'data': bookmark
+            'data': cd
           }
-          socket.emit('rmBookmark', data);
+          socket.emit('rmCd', data);
         }
         else {
           err = true;
@@ -241,8 +241,8 @@ factory('DataService',
       'findCategories': function ( query ) {
         return manager.findNew( $rootScope.categories, query );
       },
-      'findBookmarks': function ( query ) {
-        return manager.findNew( $rootScope.bookmarks, query );
+      'findCds': function ( query ) {
+        return manager.findNew( $rootScope.cds, query );
       }
     }
     socket.emit('init');

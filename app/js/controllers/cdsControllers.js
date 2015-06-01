@@ -1,8 +1,8 @@
 'use strict';
 
-var bookmarksControllers = angular.module('bookmarksControllers', []);
+var cdsControllers = angular.module('cdsControllers', []);
 
-bookmarksControllers.controller('bookmarksCtrl',
+cdsControllers.controller('cdsCtrl',
   ['$scope', '$routeParams', '$location', 'DataService', 'oninit',
   function( $scope, $routeParams, $location, DataService, oninit ) {
     $scope.query = "";
@@ -33,11 +33,11 @@ bookmarksControllers.controller('bookmarksCtrl',
       });
 
 }]).
-controller('addBookmarkCtrl',
+controller('addCdCtrl',
   ['$scope', '$routeParams', '$location', 'DataService', 'oninit',
   function( $scope, $routeParams, $location, DataService, oninit ) {
-    $scope.addBookmarkFailed = false;
-    $scope.addedBookmark = {
+    $scope.addCdFailed = false;
+    $scope.addedCd = {
       'name': "",
       'url': ""
     }
@@ -53,34 +53,34 @@ controller('addBookmarkCtrl',
         }
       });
 
-    $scope.addBookmark = function ( bookmark ) {
-      bookmark.category = $scope.category.id;
-      DataService.addBookmark( bookmark ).
+    $scope.addCd = function ( cd ) {
+      cd.category = $scope.category.id;
+      DataService.addCd( cd ).
         success( function () {
-          $scope.addBookmarkFailed = false;
+          $scope.addCdFailed = false;
           $location.path( '/user/' + $scope.currentUser + '/category/' + $scope.category.id );
         }).
         error( function ( err, errType ) {
           if( errType.alreadyExists ) {
-            $scope.addBookmarkFailed = true;
+            $scope.addCdFailed = true;
           }
         });
     }
 
 }]).
-controller('editBookmarkCtrl',
+controller('editCdCtrl',
   ['$scope', '$routeParams', '$location', 'DataService', 'oninit',
   function( $scope, $routeParams, $location, DataService, oninit ) {
-    $scope.editBookmarkFailed = false;
-    $scope.editedBookmark = {
+    $scope.editCdFailed = false;
+    $scope.editedCd = {
       'name': "",
       'url': ""
     }
 
     oninit($scope, function () {
-        var book = DataService.findBookmarks( { 'id': parseInt( $routeParams.bookmarkId ) } );
+        var book = DataService.findCds( { 'id': parseInt( $routeParams.cdId ) } );
         if(book.length > 0){
-          $scope.editedBookmark = {
+          $scope.editedCd = {
             'id': book[0].id,
             'owner': book[0].owner,
             'category': book[0].category,
@@ -90,35 +90,35 @@ controller('editBookmarkCtrl',
         }
       });
 
-    $scope.editBookmark = function ( bookmark ) {
-      DataService.editBookmark( bookmark ).
+    $scope.editCd = function ( cd ) {
+      DataService.editCd( cd ).
         success( function () {
-          $scope.editBookmarkFailed = false;
-          $location.path( '/user/' + $scope.currentUser + '/category/' + bookmark.category );
+          $scope.editCdFailed = false;
+          $location.path( '/user/' + $scope.currentUser + '/category/' + cd.category );
         }).
         error( function ( err, errType ) {
           if( errType.alreadyExists ) {
-            $scope.editBookmarkFailed = true;
+            $scope.editCdFailed = true;
           }
           else if( errType.notExists ) {
-            $location.path( '/user/' + $scope.currentUser + '/category/' + bookmark.category );
+            $location.path( '/user/' + $scope.currentUser + '/category/' + cd.category );
           }
         });
     }
 
 }]).
-controller('rmBookmarkCtrl',
+controller('rmCdCtrl',
   ['$scope', '$routeParams', '$location', 'DataService', 'oninit',
   function( $scope, $routeParams, $location, DataService, oninit ) {
-    $scope.rmedBookmark = {
+    $scope.rmedCd = {
       'name': "",
       'url': ""
     }
 
     oninit($scope, function () {
-        var book = DataService.findBookmarks( { 'id': parseInt( $routeParams.bookmarkId ) } );
+        var book = DataService.findCds( { 'id': parseInt( $routeParams.cdId ) } );
         if(book.length > 0){
-          $scope.rmedBookmark = {
+          $scope.rmedCd = {
             'id': book[0].id,
             'owner': book[0].owner,
             'category': book[0].category,
@@ -128,14 +128,14 @@ controller('rmBookmarkCtrl',
         }
       });
 
-    $scope.rmBookmark = function ( bookmark ) {
-        DataService.rmBookmark( bookmark ).
+    $scope.rmCd = function ( cd ) {
+        DataService.rmCd( cd ).
         success( function () {
-          $location.path( '/user/' + $scope.currentUser + '/category/' + bookmark.category );
+          $location.path( '/user/' + $scope.currentUser + '/category/' + cd.category );
         }).
         error( function ( err, errType ) {
           if( errType.notExists ) {
-            $location.path( '/user/' + $scope.currentUser + '/category/' + bookmark.category );
+            $location.path( '/user/' + $scope.currentUser + '/category/' + cd.category );
           }
         });
     }

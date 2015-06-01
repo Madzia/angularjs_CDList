@@ -35,9 +35,9 @@ exports.listen = function( server, Manager ) {
           Manager.findAllCategories( function ( err, data) {
             if(!err){
               res.categories = data;
-              Manager.findAllBookmarks( function ( err, data) {
+              Manager.findAllCds( function ( err, data) {
                 if(!err){
-                  res.bookmarks = data;
+                  res.cds = data;
                   client.emit('init', res);
                   console.log('init');
                 }
@@ -98,39 +98,39 @@ exports.listen = function( server, Manager ) {
       }
     });
 
-    //bookmarks
-    client.on('addBookmark', function ( data ) {
+    //cds
+    client.on('addCd', function ( data ) {
       if( data.user.id === data.data.owner ) {
-        var bookmark = { 'name': data.data.name, 'owner': data.data.owner,
+        var cd = { 'name': data.data.name, 'owner': data.data.owner,
           'category': data.data.category, 'url': data.data.url };
-        Manager.addBookmark(bookmark, function ( err, data ) {
+        Manager.addCd(cd, function ( err, data ) {
           if(!err){
-            client.emit('add', {'coll': 'bookmarks', 'data': bookmark });
-            client.broadcast.emit('add', {'coll': 'bookmarks', 'data': bookmark });
+            client.emit('add', {'coll': 'cds', 'data': cd });
+            client.broadcast.emit('add', {'coll': 'cds', 'data': cd });
           }
         });
       }
     });
 
-    client.on('editBookmark', function ( data ) {
+    client.on('editCd', function ( data ) {
       if( data.user.id === data.data.owner ) {
-        var bookmark = data.data;
-        Manager.editBookmark(bookmark, function ( err, data ) {
+        var cd = data.data;
+        Manager.editCd(cd, function ( err, data ) {
           if(!err){
-            client.emit('update', {'coll': 'bookmarks', 'data': bookmark });
-            client.broadcast.emit('update', {'coll': 'bookmarks', 'data': bookmark });
+            client.emit('update', {'coll': 'cds', 'data': cd });
+            client.broadcast.emit('update', {'coll': 'cds', 'data': cd });
           }
         });
       }
     });
 
-    client.on('rmBookmark', function ( data ) {
+    client.on('rmCd', function ( data ) {
       if( data.user.id === data.data.owner ) {
-        var bookmark = data.data;
-        Manager.rmBookmark(bookmark, function ( err, data ) {
+        var cd = data.data;
+        Manager.rmCd(cd, function ( err, data ) {
           if(!err){
-            client.emit('remove', {'coll': 'bookmarks', 'data': bookmark });
-            client.broadcast.emit('remove', {'coll': 'bookmarks', 'data': bookmark });
+            client.emit('remove', {'coll': 'cds', 'data': cd });
+            client.broadcast.emit('remove', {'coll': 'cds', 'data': cd });
           }
         });
       }

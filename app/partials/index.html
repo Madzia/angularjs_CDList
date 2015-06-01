@@ -1,14 +1,9 @@
+<div class="panel-heading">Browse categories</div>
+
+  <div class="panel-body">
 <div class="row">
-  <div class="col-md-1"></div>
-
-  <div class="col-md-10">
-
-    <h2>Browse categories</h2>
-
-    <hr/>
-
-    <div class="row">
-      <div class="col-md-4">
+      <form class="navbar-form navbar-left" role="search">
+      <div class="col-md-6">
         <div role="form" class="{{(!currentUser ? '' : 'form-inline' )}}">
           <div class="form-group">
             <label for="exampleInputEmail2">Query</label>
@@ -16,7 +11,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div role="form" class="{{(!currentUser ? '' : 'form-inline' )}}">
           <div class="form-group">
           <label for="exampleInputEmail2">Sort</label>
@@ -28,9 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <a class="btn btn-default" href="#/addcategory" ng-show="!!currentUser">Add Cateogry</a>
-      </div>
+      </form>
     </div>
 
     <hr/>
@@ -68,9 +61,4 @@
         </td>
       </tr>
     </table>
-
-  </div>
-
-  <div class="col-md-1"></div>
-
-</div>
+ </div>

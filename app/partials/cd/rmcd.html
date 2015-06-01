@@ -2,19 +2,19 @@
   <div class="col-md-1"></div>
 
   <div class="col-md-10" ng-show="!!currentUser">
-    <h2>Remove bookmark: {{rmedBookmark.name}}</h2>
+    <h2>Remove cd: {{rmedCd.name}}</h2>
     <hr/>
 
     <h3>Are you sure?</h3>
 
     <div class="row">
     <div class="col-md-6">
-      <a class="btn btn-primary" href="#/user/{{currentUser}}/category/{{rmedBookmark.category}}"
+      <a class="btn btn-primary" href="#/user/{{currentUser}}/category/{{rmedCd.category}}"
         ng-show="!!currentUser">No, cancel.</a>
     </div>
     <div class="col-md-6">
-      <button class="btn btn-danger" ng-click="rmBookmark(rmedBookmark)"
-        ng-show="( !!currentUser && rmedBookmark.owner === AuthUser.id )">Yes, remove.</button>
+      <button class="btn btn-danger" ng-click="rmCd(rmedCd)"
+        ng-show="( !!currentUser && rmedCd.owner === AuthUser.id )">Yes, remove.</button>
     </div>
     </div>
 

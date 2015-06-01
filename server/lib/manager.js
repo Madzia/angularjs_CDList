@@ -30,20 +30,20 @@ module.exports = function (Data){
     'rmCategory': function ( category, callback ) {
       Data.removeData('category', { 'id': category.id }, callback);
     },
-    //bookmarks
-    'addBookmark': function ( bookmark, callback ) {
-      bookmark.id = new Date().getTime();
-      Data.insertData('bookmark', bookmark, callback);
+    //cds
+    'addCd': function ( cd, callback ) {
+      cd.id = new Date().getTime();
+      Data.insertData('cd', cd, callback);
     },
-    'findAllBookmarks': function ( callback ) {
-      Data.findAllData('bookmark', undefined, callback);
+    'findAllCds': function ( callback ) {
+      Data.findAllData('cd', undefined, callback);
     },
-    'editBookmark': function ( bookmark, callback ) {
-      Data.updateData('bookmark', { 'id': bookmark.id },
-      { $set: { 'name': bookmark.name, 'url': bookmark.url } }, callback);
+    'editCd': function ( cd, callback ) {
+      Data.updateData('cd', { 'id': cd.id },
+      { $set: { 'name': cd.name, 'url': cd.url } }, callback);
     },
-    'rmBookmark': function ( bookmark, callback ) {
-      Data.removeData('bookmark', { 'id': bookmark.id }, callback);
+    'rmCd': function ( cd, callback ) {
+      Data.removeData('cd', { 'id': cd.id }, callback);
     }
   }
 };
