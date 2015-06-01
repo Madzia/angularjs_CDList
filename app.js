@@ -43,9 +43,12 @@ var app = express();
 
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(session({ secret: 'ng-secret' }));
+app.use(session({ secret: 'ng-secret',
+    resave: true,					//
+    saveUninitialized: true}));		//
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);

@@ -94,7 +94,7 @@ factory('DataService',
         $rootScope.categories = data.categories;
         $rootScope.cds = data.cds;
         $rootScope.init = true;
-        console.log('init');
+//        console.log('init');
     });
 
     var callbacks = function ( err, errType ) {

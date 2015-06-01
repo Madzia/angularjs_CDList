@@ -4,17 +4,17 @@ exports.signin = function(req, res){
 }
 
 exports.check = function(req, res){
-  console.log('check');
-  console.log(req.user);
+//  console.log('check');
+//  console.log(req.user);
   if( req.isAuthenticated() ){
-    console.log('isAuth');
+//    console.log('isAuth');
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf8'
     });
     res.end( JSON.stringify( { 'auth': true, 'login': req.user.login, 'id': req.user.id } ) );
   }
   else {
-    console.log('isNotAuth');
+//    console.log('isNotAuth');
     res.writeHead(200, {
       'Content-Type': 'application/json; charset=utf8'
     });

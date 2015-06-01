@@ -18,8 +18,8 @@ exports.listen = function( server, Manager ) {
 
   io.sockets.on('connection', function ( client ) {
     'use strict';
-    console.log('socket.io connected');
-    console.log(client.id);
+//    console.log('socket.io connected');
+//    console.log(client.id);
 
     //init
     client.on('init', function () {
@@ -39,7 +39,7 @@ exports.listen = function( server, Manager ) {
                 if(!err){
                   res.cds = data;
                   client.emit('init', res);
-                  console.log('init');
+//                  console.log('init');
                 }
               });
             }

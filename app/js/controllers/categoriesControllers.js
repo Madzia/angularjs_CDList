@@ -27,7 +27,7 @@ categoriesControllers.controller('addCategoryCtrl',
 controller('editCategoryCtrl',
   ['$scope', '$location', '$routeParams', 'DataService', 'oninit',
   function( $scope, $location, $routeParams, DataService, oninit ) {
-    console.log($scope.currentUser);
+//    console.log($scope.currentUser);
     $scope.editCategoryFailed = false;
     $scope.editedCateogry = {
       "name": ""
@@ -66,7 +66,7 @@ controller('editCategoryCtrl',
 controller('rmCategoryCtrl',
   ['$scope', '$location', '$routeParams', 'DataService', 'oninit',
   function( $scope, $location, $routeParams, DataService, oninit ) {
-    console.log($scope.currentUser);
+//    console.log($scope.currentUser);
     $scope.rmedCateogry = {
       "name": ""
     };

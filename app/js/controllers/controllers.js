@@ -42,7 +42,7 @@ controller('indexCtrl',
 
 
     oninit($scope, function () {
-      console.log('oninit');
+//      console.log('oninit');
       $scope.browseCategories = $scope.categories;
     });
 
