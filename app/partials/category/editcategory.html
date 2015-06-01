@@ -1,9 +1,6 @@
-<div class="row">
-  <div class="col-md-1"></div>
+<div class="panel-heading" ng-show="!!currentUser">Edit category</div>
 
-  <div class="col-md-10" ng-show="!!currentUser">
-    <h2>Edit category</h2>
-    <hr/>
+  <div class="panel-body" ng-show="!!currentUser">
 
     <div class="alert alert-danger" ng-show="!!editCategoryFailed">
       <strong>Add category failed.</strong> This name is already used.
@@ -21,5 +18,3 @@
         ng-show="( !!currentUser && editedCategory.owner === AuthUser.id )">Save</button>
     </form>
   </div>
-  <div class="col-md-1"></div>
-</div>
