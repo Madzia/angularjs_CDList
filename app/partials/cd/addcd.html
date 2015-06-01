@@ -22,5 +22,6 @@
       <button type="submit" class="btn btn-default"
         ng-disabled="( addcdForm.$invalid || (addedCd.name.length === 0) || (addedCd.url.length === 0) )"
         ng-show="( !!currentUser && category.owner === AuthUser.id )">Add cd</button>
+
     </form>
   </div>

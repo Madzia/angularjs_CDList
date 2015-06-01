@@ -19,6 +19,7 @@
   <script src="js/services/dataServices.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
 </head>
 <body  ng-controller="MainAppCtrl">
 
@@ -38,7 +39,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#/index">Home</a></li>
         <li ng-show="!!currentUser"><a href="#/user/{{currentUser}}">My Categories</a></li>
         <li ng-show="!!currentUser"><a href="#/addcategory">Add Category</a></li>
         </li>
