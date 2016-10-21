@@ -10,7 +10,7 @@ In case of project lauch you need to :
 by writing in shell:
 
 ```js
-git clone https://github.com/Madzia/angularjs_CDList.git
+git clone https://github.com/magda2609/angularjs_CDList.git
 cd angularjs_CDList
 bower install
 sudo npm install
